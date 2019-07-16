@@ -1,0 +1,19 @@
+/* 1.0 头部搜索框 */
+.search{
+  height: 120rpx;
+  padding: 30rpx 16rpx;
+  box-sizing: border-box;
+  background-color: #eee;
+}
+.search-in{
+  height: 60rpx;
+  border-radius: 5rpx;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  padding-left: 30rpx;
+}
+.search-text{
+  margin-left: 18rpx;
+  font-size: 30rpx;
+}

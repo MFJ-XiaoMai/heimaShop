@@ -1,0 +1,32 @@
+<!--pages/classify/classify.wxml-->
+<!-- 1.0 调用搜索框组件 -->
+<Search></Search>
+<view class="classify">
+
+  <!-- 2.0 左侧菜单栏 -->
+  <scroll-view scroll-y class="classify-left">
+    <block wx:for='{{ classifyData }}' wx:key=" ">
+      <view 
+      class="classify-left-item {{ index === activeIndex ? 'active' : ''}}" 
+      bindtap="changeTab" data-index="{{ index }}">{{ item.cat_name }}</view>
+    </block>
+  </scroll-view>
+
+  <!-- 3.0 右侧 -->
+  <scroll-view scroll-y class="classify-right">
+    <block wx:for="{{ subClassify }}" wx:key=" cat_id ">
+      <view class="classify-right-title">{{ item.cat_name }}</view>
+
+      <view class="classify-right-list">
+        <block wx:for="{{ item.children }}" wx:key=" cat_id " wx:for-item="item2" wx:for-index="index2">
+          <navigator 
+          class="classify-right-item"
+          url="/pages/goods_list/goods_list?keyword={{ item2.cat_name }}" >
+            <image class="classify-right-item-image" src="{{ item2.cat_icon }}"></image>
+            <view class="classify-right-item-text">{{ item2.cat_name }}</view>
+          </navigator>
+        </block>
+      </view>
+    </block>
+  </scroll-view>
+</view>

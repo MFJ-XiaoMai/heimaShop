@@ -1,0 +1,55 @@
+<!-- 1.0 头部搜索 -->
+<!-- <view class="search">
+  <view class="search-in">
+    <icon type="search" class="search-icon" size="32rpx"></icon>
+    <text class="search-text">搜索</text>
+  </view>
+</view> -->
+<!-- 1.1 调用搜索框组件 -->
+<Search></Search>
+
+<!-- 2.0 轮播图 -->
+<swiper class="slider" autoplay circular indicator-dots interval="2000" indicator-color="rgba(255,255,255,.3)" indicator-active-color="#fff">
+  <block wx:for="{{ slider }}" wx:key="{{ goods_id }}">
+    <swiper-item class="slider-item">
+      <image class="slider-image" src="{{ item.image_src }}"></image>
+    </swiper-item>
+  </block>
+</swiper>
+
+<!-- 3.0 首页入口导航 -->
+<view class="entry">
+  <block wx:for="{{ entry }}" wx:key="{{ name }}">
+    <view class="entry-item">
+      <image class="entry-item-image" src="{{ item.image_src }}"></image>
+    </view>
+  </block>
+</view>
+
+<!-- 4.0 首页楼层 -->
+<!-- 第一层循环 循环渲染首页整个楼层 -->
+<block wx:for="{{ floor }}" wx:key="{{ }}">
+  <view class="floor-title">
+    <image class="floor-title-image" src="{{ item.floor_title.image_src }}"></image>
+  </view>
+  <view class="floor-content">
+    <view class="floor-content-left">
+      <image class="floor-content-left-image" src="{{ item.product_list[0].image_src }}"></image>
+    </view>
+    <view class="floor-content-right">
+      <!-- 第二层循环 循环渲染楼层内容右侧部分 -->
+      <block wx:for="{{ item.product_list }}" wx:key="{{ }}" wx:for-item="item2" wx:for-index="index2">
+        <!-- wx:if 条件渲染 -->
+        <image wx:if="{{ index2 > 0 }}" class="floor-content-right-image" src="{{ item2.image_src }}"></image>
+      </block>
+    </view>
+  </view>
+</block>
+
+<!-- 5.0 返回顶部 -->
+<!-- 事件绑定：通过bindtap给元素添加绑定事件  bindtap="事件处理函数的函数名"-->
+<!-- 事件的参数： 通过data-*="{{  }}"  自定义属性的方式进行传递-->
+<view class="top" bindtap="goTop" data-top="{{ 666 }}" hidden="{{ !isShowTop }}">
+  <text class="top-up">︿</text>
+  <text class="top-text">顶部</text>
+</view>
